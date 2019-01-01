@@ -1,5 +1,5 @@
 # BH1750_LightLevel
-by Raymond Spangle (github <AT> leper [dot] org)
+by Raymond Spangle (github [AT] leper [dot] org)
 
 ### Purpose:
 
