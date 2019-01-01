@@ -1,0 +1,39 @@
+#!/usr/bin/python
+# BH1750_LightLevel v1.0 by Raymond Spangle (github <AT> leper [dot] org)
+# ----------------------------------------------------------------
+# This simple python script will read data from a BH1750 light
+# sensor module on a Raspberry Pi and report back the value in lux.
+# - - - - - - - - - - - - - - - - 
+# Connections:
+# 
+# BH1750:                  RPi:
+# ------                   ---
+# Vcc                      3v3 (pin 1)
+# GND                      GND (pin 9)
+# SCL                      GPIO2/I2C1 SCL (pin 5)
+# SDA                      GPIO3/I2C1 SDA (pin 3)
+# ADDR                     X (no connection)
+
+import smbus
+import time
+
+# use "i2cdetect -y 1" to find the address of your module
+BH1750 = 0x23
+HIRES_MODE = 0x20
+
+bus = smbus.SMBus(1)
+
+def toNumber(data):
+  return((data[1] + (256 * data[0])) / 1.2)
+
+def getLightLevel(addr=BH1750):
+  data = bus.read_i2c_block_data(addr,HIRES_MODE)
+  return toNumber(data)
+
+def main():
+  while True:
+    print "Current Light Level = " +str(getLightLevel()) + " lux"
+    time.sleep(0.5)
+
+if __name__ == "__main__":
+  main()
