@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# BH1750_LightLevel v1.0 by Raymond Spangle (github <AT> leper [dot] org)
+# BH1750_LightLevel v1.0 by LEVEL6 (https://github.com/lleevveell66)
 # ----------------------------------------------------------------
 # This simple python script will read data from a BH1750 light
 # sensor module on a Raspberry Pi and report back the value in lux.
